@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>08testrandom.html</title>
+<style>
+    * {
+        font-size: 20pt;
+    }
+</style>
+<script>
+    // document.write('random()결과 ', Math.random()  ,'<p>');
+    // for(){} while(){} Math.random(), Math.ceil(),, Math.floor()
+    // 1~45사이 6개 발생 배열/변수6개
+    
+    var lotto = new Array(); //배열
+    for(var a=0; a<6; a++){
+        lotto[a] = Math.floor(Math.random()*45+1);
+        for(var j=0; j<a; j++){
+            if(lotto[a]==lotto[j]){ a--; continue;}
+        }
+    }
+   
+    lotto.sort(function(a,b){return a-b;});
+    for(var k=0; k<6; k++){
+        document.write(lotto[k],' ');
+    }
+      
+</script>
+</head>
+<body>
+    <h2>08testrandom.html</h2>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>08testrandom.html</title>
+<style>
+    * {
+        font-size: 20pt;
+    }
+</style>
+<script>
+    // document.write('random()결과 ', Math.random()  ,'<p>');
+    // for(){} while(){} Math.random(), Math.ceil(),, Math.floor()
+    // 1~45사이 6개 발생 배열/변수6개
+    
+    var lotto = []; //배열
+    while(lotto.length<6) {
+        var num = Math.floor(Math.random()*10)+1;
+        if(lotto.indexOf(num)==-1){ lotto.push(num);}
+        //lotto.push(num); 중복허용
+    }
+
+    lotto.sort(function(a,b) {return a-b;});
+    for(var k=0; k<6; k++) {
+        document.write(lotto[k],' ');
+    }
+
+
+
+        // for(let k=0; k<6; k++) {
+        //    data=(Math.floor(Math.random(k)*4));
+        //    document.write(data,' ');
+        // } 
+        
+        // document.write('당첨번호는 ', data,'입니다')
+      
+</script>
+</head>
+<body>
+    <h2>08testrandom.html</h2>
+</body>
+</html>

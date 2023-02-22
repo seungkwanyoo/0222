@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+<style>
+	td {
+		font-size: 10pt;
+		text-align: center;
+		}
+</style>
+
+<script>
+   function mylotto(){
+      var lotto = new Array();
+      for(var a=0; a<6; a=a+1){
+        lotto[a] = Math.floor(Math.random()*45+1);
+        for(var j=0; j<a ; j=j+1) {
+          if(lotto[a]==lotto[j]){ a--; continue; }
+        }
+      }
+
+      lotto.sort(function(a,b){ return a-b;} );
+      for(var k=0; k<6; k++){
+        document.write(lotto[k], ' ');
+      }
+   }//end
+
+  //전역변수 
+    var num = 1;
+    var timer = 0;
+    var totalCount = 0;
+	var youCount = 0;
+	var comCount = 0;
+	var samCount = 0;
+	var flag = false;
+	var com = 0;
+   function myrotateImage(){
+		document.me.src ="./images/" +num + ".gif";
+		num++;
+		if(num == 4){num = 1;}
+
+		document.computer.src = "./images/" +num + ".gif";
+		timer = window.setTimeout("myrotateImage()", 200);		
+		flag = true;
+	}//end
+
+   function setting(num){
+    if(flag==true){
+      clearTimeout(timer);
+      flag=false;
+
+	  document.me.src ="./images/" +num + ".gif";
+
+	var com = parseInt(Math.random()*3);
+  	// document.write('컴퓨터: ',num); 
+	  //난수발생 컴퓨터 var com
+    }
+
+  }//end
+
+  
+  	
+
+  function score(you, com){
+	if(you===com) {return txtSam}
+	else if(you==="./images/1.gif";) {
+		if(com==="./images/3.gif";) {
+			return txtYou
+		}else {
+			return txtCom
+		}
+	}
+	else if(you==="./images/3.gif";) {
+        if(com==="./images/2.gif";){
+            return txtYou;  
+    	 }else{
+        	return txtCom;
+        }
+    }
+	totalCount++; //게임시작할때마다 게임횟수증가
+	
+  }//end
+</script>
+</head>
+<body>
+    <h2 align="center"> 10testgame.html 가위, 바위, 보!!!</h2>
+	<table border="0" width="300" align="center">
+		<tr>
+			<td colspan="2"> <img src="./images/1.gif" width="90" height="90" border="0" alt="" onclick="setting(1)"> </td>
+			<td colspan="2"> <img src="./images/2.gif" width="90" height="90" border="0" alt="" onclick="setting(2)"> </td>
+			<td colspan="2"> <img src="./images/3.gif" width="90" height="90" border="0" alt="" onclick="setting(3)"> </td>
+		</tr>
+		<tr>
+			<td colspan="2">가위</td>
+			<td colspan="2">바위</td>
+			<td colspan="2">보</td>
+		</tr>
+		<tr>
+			<td colspan="6"><br><br></td>
+		</tr>
+		<tr>
+			<td colspan="3"><img src="images/1.gif" width="90" height="90" border="0" alt="" name="me"></td>
+			<td colspan="3"><img src="images/1.gif" width="90" height="90" border="0" alt="" name="computer"></td>
+		</tr>
+		<tr>
+			<td colspan="3">You</td>
+			<td colspan="3">Computer</td>
+		</tr>
+		<tr>
+			<td colspan="6"><br><br></td>
+		</tr>
+		<tr>
+			<td colspan="6">
+				<input type="text" name="txtTotal" size="2"> 전
+				<input type="text" name="txtYou" size="2"> 승
+				<input type="text" name="txtSam" size="2"> 무
+				<input type="text" name="txtCom" size="2"> 패
+			</td>
+		</tr>
+		<tr>
+			<td colspan="6">
+				<br><br>
+				<input type="button" value="게임 시작" onclick="myrotateImage()">
+			</td>
+		</tr>
+	</table>
+</body>
+</html>
