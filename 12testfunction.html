@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12testfunction.html</title>
+<style>
+    * {
+        font-size: 20pt;
+    }
+</style>
+<script>
+    function setting(num) {
+        // alert(num + '번호를 선택하셨군요\n반갑습니다. 오늘은 목요일입니다.');
+        document.me.src = './images/'+ num + '.gif';
+        var com = Math.floor(Math.random()*3)+1;
+        // alert('com컴퓨터가 난수 ' + com);
+        document.computer.src = './images/'+ com + '.gif';
+        score(num, com); //계산해서 if조건
+    }//end
+    var totalCount = 0; //전역변수
+    var youCount = 0;
+    var comCount = 0;
+    var samCount = 0;
+    function score(you,com) {
+        totalCount++// totalCount = totalCount +1; //단항연산
+        document.all.txtTotal.value=totalCount;//게임전적횟수
+        
+        if(you==com){samCount++//무승부
+        document.all.txtSam.value=samCount;
+        }
+        if((you==2&&com==1) || (you==3&&com==2) || (you==1&&com==3)) {youCount++; //본인 승
+        document.all.txtYou.value=youCount;
+        }
+        if((you==1&&com==2) || (you==2&&com==3) || (you==3&&com==1)) {comCount++; //컴 승
+        document.all.txtCom.value=comCount;
+        }
+    
+
+    }//end
+</script>
+</head>
+<body>
+    <h2>12testfunction.html</h2>
+    <button onclick="setting(1)">번호1</button>
+    <button onclick="setting(2)">번호2</button>
+    <button onclick="setting(3)">번호3</button><p></p>
+        <img src="./images/1.gif" width="90" height="90" border="0" alt="" onclick="setting(1)"> 
+	    <img src="./images/2.gif" width="90" height="90" border="0" alt="" onclick="setting(2)">
+	    <img src="./images/3.gif" width="90" height="90" border="0" alt="" onclick="setting(3)">
+    <p></p>
+    <img src="images/cake1.jpg" width="120" height="90" border="0" alt="" name="me">
+    <img src="images/cake2.jpg" width="120" height="90" border="0" alt="" name="computer">
+    <p></p>
+    <input type="text" name="txtTotal"  id="txtTotal" size="2"  style="text-align:right" > 전
+    <input type="text" name="txtYou"   id="txtYou"    size="2"   style="text-align:right" > 승
+    <input type="text" name="txtSam"   id="txtSam"    size="2"  style="text-align:right" > 무
+    <input type="text" name="txtCom"   id="txtCom"    size="2"  style="text-align:right" > 패
+</body>
+</html>
